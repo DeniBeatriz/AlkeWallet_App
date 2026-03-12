@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Alke Wallet</string>
+    <string name="welcome_mess">Bienvenido a tu wallet</string>
+    <string name="new_account">Crear cuenta nueva</string>
+    <string name="account">¿Ya tienes cuenta?</string>
+    <string name="login">Ingresa y empieza a transferir</string>
+    <string name="signup">Registrate y empieza a transferir</string>
+    <string name="user_name">Usuario</string>
+    <string name="email">Correo electronico</string>
+    <string name="password">Contraseña</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+    <string name="forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="balance">Balance total</string>
+    <string name="enter">Ingresar</string>
+    <string name="home_page">Inicio</string>
+    <string name="send">Enviar dinero</string>
+    <string name="receive">Recibir dinero"</string>
+    <string name="latest_transactions">Transacciones recientes</string>
+    <string name="not_transactions">No hay transacciones registradas</string>
+    <string name="amount">Monto a transferir</string>
+    <string name="note">Motivo transferencia</string>
+    <string name="mess_note">Agregar mensaje(opcional)</string>
+    <string name="profile_title">Mi perfil</string>
+    <string name="profile_name">Hola Deni</string>
+    <string name="profile_info">Mi información</string>
+    <string name="profile_cards">Mis tarjetas</string>
+    <string name="profile_set">Opciones</string>
+    <string name="profile_help">Centro de ayuda</string>
+    <string name="alert_coincide_password">Contraseñas no coinciden</string>
+    <string name="alert_empty_fields">Por favor, complete todos los campos</string>
+    <string name="alert_forgot_password">Funciónalidad no disponible</string>
+
+
+</resources>

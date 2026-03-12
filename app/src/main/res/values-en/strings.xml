@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Alke Wallet</string>
+    <string name="welcome_mess">Welcome to your wallet</string>
+    <string name="new_account">Create new account</string>
+    <string name="account">Do you have an account?</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="signup">Sign Up and transfer</string>
+    <string name="user_name">User</string>
+    <string name="confirm_password">Repeat password</string>
+    <string name="forgot_password">Forgot your password?</string>
+    <string name="balance">Total balance</string>
+    <string name="login">Log in and transfer</string>
+    <string name="enter">Log in</string>
+    <string name="home_page">Home</string>
+    <string name="send">Send money</string>
+    <string name="receive">Receive money</string>
+    <string name="latest_transactions">The latest transactions</string>
+    <string name="not_transactions">There aren\'t transactions</string>
+    <string name="amount">Amount to transfer</string>
+    <string name="note">Message transfer</string>
+    <string name="mess_note">Write down message (optional)</string>
+    <string name="profile_title">My profile</string>
+    <string name="profile_name">Hello Deni</string>
+    <string name="profile_info">My information</string>
+    <string name="profile_cards">My cards</string>
+    <string name="profile_set">Setting</string>
+    <string name="profile_help">Help center</string>
+    <string name="alert_forgot_password">Function not available</string>
+    <string name="alert_coincide_password">Passwords are different</string>
+    <string name="alert_empty_fields">Please, complete all the spaces</string>
+</resources>
