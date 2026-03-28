@@ -43,15 +43,13 @@ class MainActivity7 : AppCompatActivity() {
                 if (montoDouble == null || montoDouble <= 0) {
                     editTextMonto.error = "El monto debe ser mayor a cero"
                 } else {
-                    // Nota: Si ReceiveModel no es un objeto estático (object), 
-                    // debes instanciarlo primero: val receiveModel = ReceiveModel()
-                    //val receiveModel = ReceiveModel()
+
                     val exito = SendModel.sumarSaldo(montoDouble)
 
                     if (exito) {
                         Toast.makeText(this, "Transferencia de $$montoDouble realizada", Toast.LENGTH_SHORT).show()
                         
-                        // Opcional: Volver a la pantalla 5 enviando el saldo actualizado
+                        // Volver a la pantalla 5 enviando el saldo actualizado
                         val intent = Intent(this, MainActivity5::class.java)
                         intent.putExtra("saldoTotal", SendModel.getSaldoTotal())
                         startActivity(intent)

@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView
 
-//import androidx.activity.EdgeToEdge;
+
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -19,8 +19,7 @@ public class MainActivity5 : AppCompatActivity() {
 
     //Declarar el Modelo y Componente de la vista
     private lateinit var sendModel: SendModel
-    //private lateinit var receiveModel: ReceiveModel
-    //private lateinit var receiveModel: ReceiveModel
+
 
     private lateinit var txtBalance: TextView
 
@@ -38,9 +37,7 @@ public class MainActivity5 : AppCompatActivity() {
 
         //Singleton:misma instancia que MainActivity8
         sendModel = SendModel
-        //sendModel = ReceiveModel
-        //.getInstance()
-        //receiveModel = ReceiveModel()
+
 
         //Vincular los componentes de la vista con las variables
         txtBalance = findViewById(R.id.txtBalance)
@@ -48,10 +45,6 @@ public class MainActivity5 : AppCompatActivity() {
         val btnReceive = findViewById<Button>(R.id.btnReceive)
         val imgProfile = findViewById<ImageView>(R.id.imgProfile)
         val imgNotification = findViewById<ImageView>(R.id.imageView7)
-        //val txtBalance = findViewById<TextView>(R.id.txtBalance)
-        //val txtTotalBalance = findViewById<TextView>(R.id.txtTotalBalance)
-        //val txtHome = findViewById<TextView>(R.id.txtHome)
-        //val txtLatestTransactions = findViewById<TextView>(R.id.txtLatestTransactions)
 
         btnSend.setOnClickListener {
             val intent = Intent(this, MainActivity8::class.java)
@@ -76,11 +69,7 @@ public class MainActivity5 : AppCompatActivity() {
 
 
 
-       // btnReceive.setOnClickListener(v -> {
-            // Acciones al hacer clic en btnReceive
-       //     Intent intent = new Intent(MainActivity5.this, MainActivity7.class);
-      //      startActivity(intent);
-        //});
+
 
     }
 }

@@ -15,9 +15,7 @@ import com.example.alkewallet.model.SendModel
 class MainActivity8 : AppCompatActivity() {
 
 
-    //private lateinit var iconBack: ImageView
-    //private lateinit var buttonReceive: Button
-    //private lateinit var editTextNumberDecimal: EditText
+
     private lateinit var sendModel: SendModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +32,7 @@ class MainActivity8 : AppCompatActivity() {
 
         // Instanciar el modelo
         sendModel = SendModel
-            //.getInstance()
+
 
         //Vincular los componentes XML con las variables
         val btnSendContact = findViewById<Button>(R.id.btnSendContact)
@@ -66,18 +64,13 @@ class MainActivity8 : AppCompatActivity() {
                         finish() // Finaliza para que no se pueda volver atrás al formulario
                     } else {
                         Toast.makeText(this, "Saldo insuficiente", Toast.LENGTH_SHORT).show()
-                        //val saldoRestando = sendModel.getSaldoTotal()
-                        //val intent = Intent(this, MainActivity5::class.java)
-                        //intent.putExtra("monto", saldoRestando)
-                        //intent.putExtra("saldoTotal", saldoRestando)
-                        //startActivity(intent)
+
 
                     }
 
 
                     
-                    //Toast.makeText(this, "Transferencia de $$montoDouble realizada", Toast.LENGTH_SHORT).show()
-                    //finish() // Finaliza para que no se pueda volver atrás al formulario
+
                 }
             }
         }
