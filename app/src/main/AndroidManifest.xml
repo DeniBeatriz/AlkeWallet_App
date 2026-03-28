@@ -12,31 +12,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AlkeWallet">
         <activity
-            android:name=".MainActivity9"
+            android:name=".controller.MainActivity9"
             android:exported="false" />
         <activity
-            android:name=".MainActivity8"
+            android:name=".controller.MainActivity8"
             android:exported="false" />
         <activity
-            android:name=".MainActivity7"
+            android:name=".controller.MainActivity7"
             android:exported="false" />
         <activity
-            android:name=".MainActivity6"
+            android:name=".controller.MainActivity6"
             android:exported="false" />
         <activity
-            android:name=".MainActivity5"
+            android:name=".controller.MainActivity5"
             android:exported="false" />
         <activity
-            android:name=".MainActivity4"
+            android:name=".controller.MainActivity4"
             android:exported="false" />
         <activity
-            android:name=".MainActivity3"
+            android:name=".controller.MainActivity3"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".controller.MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".controller.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

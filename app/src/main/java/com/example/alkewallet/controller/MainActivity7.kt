@@ -1,4 +1,4 @@
-package com.example.alkewallet
+package com.example.alkewallet.controller
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,69 +10,56 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.alkewallet.R
 import com.example.alkewallet.model.SendModel
 
-class MainActivity8 : AppCompatActivity() {
-
-
-
-    private lateinit var sendModel: SendModel
+class MainActivity7 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main8)
+        setContentView(R.layout.activity_main7)
 
-        // Configuración de Insets para el diseño EdgeToEdge
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Instanciar el modelo
-        sendModel = SendModel
-
-
-        //Vincular los componentes XML con las variables
-        val btnSendContact = findViewById<Button>(R.id.btnSendContact)
         val iconBack = findViewById<ImageView>(R.id.iconBack)
-        val editTextNumberDecimal = findViewById<EditText>(R.id.etNumberDecimalSend)
+        val btnReceiveContact = findViewById<Button>(R.id.btnReceiveContact)
+        val editTextMonto = findViewById<EditText>(R.id.etNumberDecimalReceive)
 
-        // Botón Volver
         iconBack.setOnClickListener {
-            finish() // Cierra la actividad actual y vuelve a la anterior
+            finish()
         }
 
-        // Botón Enviar/Recibir
-        btnSendContact.setOnClickListener {
-            val monto = editTextNumberDecimal.text.toString()
-
+        btnReceiveContact.setOnClickListener {
+            val monto = editTextMonto.text.toString()
             if (monto.isEmpty()) {
-                editTextNumberDecimal.error = "El monto es requerido"
+                editTextMonto.error = "El monto es requerido"
                 return@setOnClickListener
             } else {
                 val montoDouble = monto.toDoubleOrNull()
-                
                 if (montoDouble == null || montoDouble <= 0) {
-                    editTextNumberDecimal.error = "El monto debe ser mayor a cero"
+                    editTextMonto.error = "El monto debe ser mayor a cero"
                 } else {
-                    val exito = sendModel.restarSaldo(montoDouble)
+
+                    val exito = SendModel.sumarSaldo(montoDouble)
 
                     if (exito) {
                         Toast.makeText(this, "Transferencia de $$montoDouble realizada", Toast.LENGTH_SHORT).show()
-                        finish() // Finaliza para que no se pueda volver atrás al formulario
+
+                        // Volver a la pantalla 5 enviando el saldo actualizado
+                        val intent = Intent(this, MainActivity5::class.java)
+                        intent.putExtra("saldoTotal", SendModel.getSaldoTotal())
+                        startActivity(intent)
+                        finish()
                     } else {
-                        Toast.makeText(this, "Saldo insuficiente", Toast.LENGTH_SHORT).show()
-
-
+                        Toast.makeText(this, "Error al procesar", Toast.LENGTH_SHORT).show()
                     }
-
-
-                    
-
                 }
             }
         }
-    }
-}
+    } // Llave que cierra onCreate
+} // Llave que cierra la Clase

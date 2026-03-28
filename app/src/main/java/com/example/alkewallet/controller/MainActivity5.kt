@@ -1,18 +1,17 @@
-package com.example.alkewallet;
+package com.example.alkewallet.controller
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.content.Intent
+import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
-
-
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import com.example.alkewallet.controller.MainActivity7
+import com.example.alkewallet.controller.MainActivity8
+import com.example.alkewallet.R
 import com.example.alkewallet.model.SendModel
 
 public class MainActivity5 : AppCompatActivity() {
