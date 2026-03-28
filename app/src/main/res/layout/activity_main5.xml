@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
-        android:text="$352.45"
+        android:text="$0.00"
         android:textColor="@color/white"
         android:textSize="30dp"
         android:textStyle="bold"

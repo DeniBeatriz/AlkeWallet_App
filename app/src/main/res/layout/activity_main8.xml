@@ -10,10 +10,9 @@
     tools:context=".MainActivity8">
 
     <TextView
-        android:id="@+id/txtTitleReceive"
+        android:id="@+id/txtTitleSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="40dp"
         android:text="@string/send"
@@ -27,14 +26,14 @@
         android:layout_width="30dp"
         android:layout_height="15dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="70dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtTitleSend"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtTitleSend"
         app:srcCompat="@drawable/icon_back" />
 
     <ImageView
-        android:id="@+id/iconContactReceive"
-        android:layout_width="match_parent"
+        android:id="@+id/iconContactSend"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="30dp"
@@ -42,24 +41,26 @@
         android:scaleType="fitStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTitleReceive"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitleSend"
         app:srcCompat="@drawable/icon_contact_send" />
 
     <TextView
-        android:id="@+id/txtAmount"
+        android:id="@+id/txtAmountSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="30dp"
         android:text="@string/amount"
+        android:labelFor="@+id/etNumberDecimalSend"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iconContactReceive" />
+        app:layout_constraintTop_toBottomOf="@+id/iconContactSend" />
 
     <EditText
-        android:id="@+id/editTextNumberDecimal"
-        android:layout_width="match_parent"
+        android:id="@+id/etNumberDecimalSend"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:minHeight="48dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="40dp"
@@ -68,10 +69,10 @@
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAmount" />
+        app:layout_constraintTop_toBottomOf="@+id/txtAmountSend" />
 
     <TextView
-        android:id="@+id/txtNoteReceive"
+        android:id="@+id/txtNoteTtile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -79,11 +80,11 @@
         android:text="@string/note"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal" />
+        app:layout_constraintTop_toBottomOf="@+id/etNumberDecimalSend" />
 
     <EditText
-        android:id="@+id/textNoteReceive"
-        android:layout_width="match_parent"
+        android:id="@+id/etNoteSend"
+        android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="15dp"
@@ -96,12 +97,13 @@
         android:textColor="@color/grey"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNoteReceive" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNoteTtile" />
 
     <Button
-        android:id="@+id/btnReceiveContact"
-        android:layout_width="match_parent"
+        android:id="@+id/btnSendContact"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"

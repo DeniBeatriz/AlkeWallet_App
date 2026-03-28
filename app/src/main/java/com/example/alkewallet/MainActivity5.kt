@@ -1,0 +1,86 @@
+package com.example.alkewallet;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView
+
+//import androidx.activity.EdgeToEdge;
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import com.example.alkewallet.model.SendModel
+
+public class MainActivity5 : AppCompatActivity() {
+
+    //Declarar el Modelo y Componente de la vista
+    private lateinit var sendModel: SendModel
+    //private lateinit var receiveModel: ReceiveModel
+    //private lateinit var receiveModel: ReceiveModel
+
+    private lateinit var txtBalance: TextView
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState);
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_main5);
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+        //Singleton:misma instancia que MainActivity8
+        sendModel = SendModel
+        //sendModel = ReceiveModel
+        //.getInstance()
+        //receiveModel = ReceiveModel()
+
+        //Vincular los componentes de la vista con las variables
+        txtBalance = findViewById(R.id.txtBalance)
+        val btnSend = findViewById<Button>(R.id.btnSend)
+        val btnReceive = findViewById<Button>(R.id.btnReceive)
+        val imgProfile = findViewById<ImageView>(R.id.imgProfile)
+        val imgNotification = findViewById<ImageView>(R.id.imageView7)
+        //val txtBalance = findViewById<TextView>(R.id.txtBalance)
+        //val txtTotalBalance = findViewById<TextView>(R.id.txtTotalBalance)
+        //val txtHome = findViewById<TextView>(R.id.txtHome)
+        //val txtLatestTransactions = findViewById<TextView>(R.id.txtLatestTransactions)
+
+        btnSend.setOnClickListener {
+            val intent = Intent(this, MainActivity8::class.java)
+            startActivity(intent)
+
+        }
+        btnReceive.setOnClickListener {
+            val intent = Intent(this, MainActivity7::class.java)
+            startActivity(intent)
+
+        }
+    }
+    override fun onResume() {
+        super.onResume()
+        txtBalance.text = "$${String.format("%.2f", sendModel.getSaldoTotal())}"
+
+
+
+
+
+
+
+
+
+       // btnReceive.setOnClickListener(v -> {
+            // Acciones al hacer clic en btnReceive
+       //     Intent intent = new Intent(MainActivity5.this, MainActivity7.class);
+      //      startActivity(intent);
+        //});
+
+    }
+}
