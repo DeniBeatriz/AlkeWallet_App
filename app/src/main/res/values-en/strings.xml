@@ -30,4 +30,6 @@
     <string name="alert_forgot_password">Function not available</string>
     <string name="alert_coincide_password">Passwords are different</string>
     <string name="alert_empty_fields">Please, complete all the spaces</string>
+    <string name="sender">Sender</string>
+    <string name="receiver">Receiver</string>
 </resources>

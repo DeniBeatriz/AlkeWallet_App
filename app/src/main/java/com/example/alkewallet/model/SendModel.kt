@@ -4,7 +4,7 @@ package com.example.alkewallet.model
 
 
 object SendModel{
-    private var saldoTotal: Double = 352.45
+    private var saldoTotal: Double = 0.0
 
 
     //Método para restar al saldo

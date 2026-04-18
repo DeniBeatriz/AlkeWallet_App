@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,31 +14,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AlkeWallet">
         <activity
-            android:name=".controller.MainActivity9"
+            android:name=".SelectContactActivity"
+            android:exported="false" />
+        <!-- CORREGIDO: Se quitó la / -->
+        <activity
+            android:name=".ui.MainActivity9"
             android:exported="false" />
         <activity
-            android:name=".controller.MainActivity8"
+            android:name=".ui.MainActivity8"
             android:exported="false" />
         <activity
-            android:name=".controller.MainActivity7"
+            android:name=".ui.MainActivity7"
             android:exported="false" />
         <activity
-            android:name=".controller.MainActivity6"
+            android:name=".ui.MainActivity6"
             android:exported="false" />
         <activity
-            android:name=".controller.MainActivity5"
+            android:name=".ui.MainActivity5"
             android:exported="false" />
         <activity
-            android:name=".controller.MainActivity4"
+            android:name=".ui.MainActivity4"
             android:exported="false" />
         <activity
-            android:name=".controller.MainActivity3"
+            android:name=".ui.MainActivity3"
             android:exported="false" />
         <activity
-            android:name=".controller.MainActivity2"
+            android:name=".ui.MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".controller.MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

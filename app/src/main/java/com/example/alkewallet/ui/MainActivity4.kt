@@ -1,4 +1,4 @@
-package com.example.alkewallet.controller
+package com.example.alkewallet.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.alkewallet.controller.MainActivity5
 import com.example.alkewallet.R
 
 class MainActivity4 : AppCompatActivity() {

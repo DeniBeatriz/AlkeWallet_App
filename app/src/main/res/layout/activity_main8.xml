@@ -7,14 +7,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E1F5FE"
-    tools:context=".controller.MainActivity8">
+    tools:context=".ui.MainActivity8">
 
     <TextView
         android:id="@+id/txtTitleSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
-        android:layout_marginEnd="40dp"
         android:text="@string/send"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,42 +30,98 @@
         app:layout_constraintTop_toTopOf="@+id/txtTitleSend"
         app:srcCompat="@drawable/icon_back" />
 
-    <ImageView
-        android:id="@+id/iconContactSend"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
+    <TextView
+        android:id="@+id/txtSender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="30dp"
+        android:text="@string/sender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitleSend" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="40dp"
-        android:scaleType="fitStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTitleSend"
-        app:srcCompat="@drawable/icon_contact_send" />
+        app:layout_constraintTop_toBottomOf="@+id/txtSender">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etSender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/sender" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txtReceiver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/receiver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <!-- BOTÓN PARA SELECCIONAR CONTACTO -->
+    <ImageButton
+        android:id="@+id/btnPickContact"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="10dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Pick contact"
+        app:layout_constraintBottom_toBottomOf="@+id/txtReceiver"
+        app:layout_constraintStart_toEndOf="@+id/txtReceiver"
+        app:layout_constraintTop_toTopOf="@+id/txtReceiver"
+        app:srcCompat="@drawable/ic_menu_contact"
+        app:tint="@color/green" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtReceiver">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etReceiver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/receiver" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/txtAmountSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:text="@string/amount"
-        android:labelFor="@+id/etNumberDecimalSend"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iconContactSend" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
     <EditText
         android:id="@+id/etNumberDecimalSend"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/background_edit_text"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAmountSend" />
@@ -97,7 +152,6 @@
         android:textColor="@color/grey"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNoteTtile" />
 

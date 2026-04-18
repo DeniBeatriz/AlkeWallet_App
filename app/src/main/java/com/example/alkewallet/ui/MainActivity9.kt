@@ -1,4 +1,4 @@
-package com.example.alkewallet.controller
+package com.example.alkewallet.ui
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -7,18 +7,16 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.alkewallet.R
 
-public class MainActivity6 : AppCompatActivity() {
+class MainActivity9 : AppCompatActivity() {
 
-
-   override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState);
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main6);
-
+        setContentView(R.layout.activity_main9)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-          val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-   }
+    }
 }
