@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E1F5FE"
-    tools:context=".ui.MainActivity8">
+    tools:context=".ui.SendMoneyActivity">
 
     <TextView
         android:id="@+id/txtTitleSend"
@@ -40,23 +40,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTitleSend" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+    <TextView
+        android:id="@+id/txtSenderValue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="40dp"
+        android:background="@drawable/background_edit_text"
+        android:padding="12dp"
+        android:text=""
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSender">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etSender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/sender" />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/txtSender" />
 
     <TextView
         android:id="@+id/txtReceiver"
@@ -66,19 +63,22 @@
         android:layout_marginTop="20dp"
         android:text="@string/receiver"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/txtSenderValue" />
+
 
     <!-- BOTÓN PARA SELECCIONAR CONTACTO -->
+
     <ImageButton
         android:id="@+id/btnPickContact"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="16dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="Pick contact"
         app:layout_constraintBottom_toBottomOf="@+id/txtReceiver"
         app:layout_constraintStart_toEndOf="@+id/txtReceiver"
         app:layout_constraintTop_toTopOf="@+id/txtReceiver"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_menu_contact"
         app:tint="@color/green" />
 
@@ -160,13 +160,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="50dp"
         android:backgroundTint="@color/green"
         android:text="@string/send"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNoteSend" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

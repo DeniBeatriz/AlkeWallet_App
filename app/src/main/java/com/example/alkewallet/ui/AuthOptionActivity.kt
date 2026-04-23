@@ -10,10 +10,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.alkewallet.R
 
-class MainActivity2 : AppCompatActivity() {
+class AuthOptionActivity : AppCompatActivity() {
 
     private lateinit var btnCreateAccount: Button
-    private lateinit var txtCuenta: TextView
+    private lateinit var txtLogin: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,15 +27,15 @@ class MainActivity2 : AppCompatActivity() {
         }
 
         btnCreateAccount = findViewById(R.id.btnCreateAccount)
-        txtCuenta = findViewById(R.id.txtCuenta)
+        txtLogin = findViewById(R.id.txtLogin)
 
         btnCreateAccount.setOnClickListener {
-            val intent = Intent(this, MainActivity4::class.java)
+            val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
 
-        txtCuenta.setOnClickListener {
-            val intent = Intent(this, MainActivity3::class.java)
+        txtLogin.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }

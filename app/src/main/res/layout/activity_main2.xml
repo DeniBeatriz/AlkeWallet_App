@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_login"
-    tools:context=".ui.MainActivity2">
+    tools:context=".ui.AuthOptionActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -31,13 +31,13 @@
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/blue_light"
         android:text="@string/new_account"
-        app:layout_constraintBottom_toTopOf="@+id/txtCuenta"
+        app:layout_constraintBottom_toTopOf="@+id/txtLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
-        android:id="@+id/txtCuenta"
+        android:id="@+id/txtLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"

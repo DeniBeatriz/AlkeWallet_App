@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_login_signup"
-    tools:context=".ui.MainActivity4">
+    tools:context=".ui.RegisterActivity">
 
 
     <TextView
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtTitleSignUP" />
 
     <EditText
-        android:id="@+id/editTextTextName"
+        android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -58,10 +58,10 @@
         android:text="@string/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextName" />
+        app:layout_constraintTop_toBottomOf="@+id/etName" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress2"
+        android:id="@+id/etEmail2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -82,7 +82,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress2" />
+        app:layout_constraintTop_toBottomOf="@+id/etEmail2" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutPassword2"
@@ -99,7 +99,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtPassword2"> <!-- ID del TextView que dice "Contraseña" -->
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextPassword1"
+            android:id="@+id/etCreatePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_edit_text"
@@ -133,7 +133,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtPassword3"> <!-- ID del TextView que dice "Repetir Contraseña" -->
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextPassword2"
+            android:id="@+id/etConfirmedPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_edit_text"
@@ -156,7 +156,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword3" />
 
     <TextView
-        android:id="@+id/txtAccount"
+        android:id="@+id/txtGoToLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"

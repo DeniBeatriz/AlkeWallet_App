@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Este ID debe coincidir con tu código -->
     <TextView
         android:id="@+id/txtItemSender"
         android:layout_width="wrap_content"
@@ -13,12 +12,25 @@
         android:textSize="16sp"
         android:textStyle="bold" />
 
-    <!-- Este ID debe coincidir con tu código -->
     <TextView
         android:id="@+id/txtItemAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/txtItemDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:textColor="@color/grey" />
+
+    <TextView
+        android:id="@+id/txtItemDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:textColor="@color/black" />
 
 </LinearLayout>

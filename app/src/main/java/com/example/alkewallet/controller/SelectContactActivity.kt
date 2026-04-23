@@ -2,6 +2,7 @@ package com.example.alkewallet.controller
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.alkewallet.data.api.RetrofitClient
@@ -9,6 +10,7 @@ import com.example.alkewallet.databinding.ActivitySelectContactBinding
 import kotlinx.coroutines.launch
 
 class SelectContactActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivitySelectContactBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +18,6 @@ class SelectContactActivity : AppCompatActivity() {
         binding = ActivitySelectContactBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Configuración del adaptador con la acción de selección
         val adapter = ContactAdapter { name ->
             val intent = Intent()
             intent.putExtra("selected_contact", name)
@@ -26,15 +27,26 @@ class SelectContactActivity : AppCompatActivity() {
 
         binding.rvContacts.adapter = adapter
 
-        // Carga de usuarios desde la API
         lifecycleScope.launch {
             try {
-                val users = RetrofitClient.instance.getUsers()
-                if (users.isNotEmpty()) {
+                val response = RetrofitClient.instance.getUsers()
+
+                if (response.isSuccessful) {
+                    val users = response.body().orEmpty()
                     adapter.setContacts(users)
+                } else {
+                    Toast.makeText(
+                        this@SelectContactActivity,
+                        "No fue posible cargar los contactos",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             } catch (e: Exception) {
-                // Aquí podrías mostrar un Toast en caso de error de red
+                Toast.makeText(
+                    this@SelectContactActivity,
+                    "Error de conexión al cargar contactos",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

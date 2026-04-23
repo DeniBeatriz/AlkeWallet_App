@@ -1,8 +1,11 @@
 package com.example.alkewallet.model
 
 data class UserModel(
-    val id: Int,
+    val id: String? = null,
     val name: String,
+    val email: String? = null,
+
+
 
 
 )

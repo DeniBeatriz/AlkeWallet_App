@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E1F5FE"
-    tools:context=".ui.MainActivity7">
+    tools:context=".ui.ReceiveMoneyActivity">
 
     <TextView
         android:id="@+id/txtTitleReceive"
@@ -57,6 +57,20 @@
             android:hint="@string/sender" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- BOTÓN PARA SELECCIONAR CONTACTO -->
+    <ImageButton
+        android:id="@+id/btnPickContact"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="10dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Pick contact"
+        app:layout_constraintBottom_toBottomOf="@+id/txtSender"
+        app:layout_constraintStart_toEndOf="@+id/txtSender"
+        app:layout_constraintTop_toTopOf="@+id/txtSender"
+        app:srcCompat="@drawable/ic_menu_contact"
+        app:tint="@color/green" />
+
     <TextView
         android:id="@+id/txtReceiver"
         android:layout_width="wrap_content"
@@ -67,33 +81,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
-    <!-- BOTÓN PARA SELECCIONAR CONTACTO -->
-    <ImageButton
-        android:id="@+id/btnPickContact"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="10dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Pick contact"
-        app:layout_constraintBottom_toBottomOf="@+id/txtReceiver"
-        app:layout_constraintStart_toEndOf="@+id/txtReceiver"
-        app:layout_constraintTop_toTopOf="@+id/txtReceiver"
-        app:srcCompat="@drawable/ic_menu_contact"
-        app:tint="@color/green" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
+    <TextView
+        android:id="@+id/txtReceiverValue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="40dp"
+        android:background="@drawable/background_edit_text"
+        android:padding="12dp"
+        android:text=""
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtReceiver">
+        app:layout_constraintTop_toBottomOf="@+id/txtReceiver" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+
 
     <TextView
         android:id="@+id/txtAmountReceive"
@@ -105,7 +108,7 @@
         android:text="@string/amount"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etReceiver" />
+        app:layout_constraintTop_toBottomOf="@+id/txtReceiverValue" />
 
     <EditText
         android:id="@+id/etNumberDecimalReceive"
@@ -159,6 +162,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="50dp"
         android:backgroundTint="@color/blue_dark"
@@ -166,18 +170,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etReceiver"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="40dp"
-        android:hint="@string/receiver"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtReceiver" />
+        app:layout_constraintTop_toBottomOf="@+id/etNoteReceive" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

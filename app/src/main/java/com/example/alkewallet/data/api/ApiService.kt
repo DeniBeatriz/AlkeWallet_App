@@ -11,14 +11,14 @@ import retrofit2.http.Path
 interface ApiService {
 
     @GET("transactions")
-    suspend fun getTransactions(): List<TransactionsModel>
+    suspend fun getTransactions(): Response<List<TransactionsModel>>
 
     //Obtener transacciones del servidor
     @GET("transactions/{id}")
-    suspend fun getTransactions(@Path("id") id: Int): List<TransactionsModel>
+    suspend fun getTransactions(@Path("id") id: String): Response<TransactionsModel>
 
     @GET("users")
-    suspend fun getUsers(): List<UserModel>
+    suspend fun getUsers(): Response<List<UserModel>>
 
     //Enviar una nueva transacción
     @POST("transactions")

@@ -6,55 +6,43 @@ import com.example.alkewallet.data.network.TransactionsModelRoom
 import com.example.alkewallet.model.TransactionsModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import retrofit2.Response
 
 class WalletRepository(
     private val transactionsDao: TransactionsDao,
     private val apiService: ApiService
 ) {
 
-    /**
-     * Obtiene transacciones específicas desde la API y las guarda en la base de datos local.
-     */
-    suspend fun fetchAndSaveTransactions(id: Int) {
+    suspend fun fetchAndSaveTransactions() {
         withContext(Dispatchers.IO) {
-            try {
-                val response = apiService.getTransactions(id)
-                val entities = response.map { model ->
+            val response = apiService.getTransactions()
+
+            if (response.isSuccessful) {
+                val remoteTransactions = response.body().orEmpty()
+
+                val entities = remoteTransactions.map { model ->
                     TransactionsModelRoom(
+                        remoteId = model.id,
                         sender = model.sender,
                         receiver = model.receiver,
                         amount = model.amount,
                         date = model.date,
                         description = model.description,
-                        status = "COMPLETED"
+                        status = "COMPLETED",
+                        type = if (model.sender == "Ingreso Externo") "INCOME" else "EXPENSE"
                     )
                 }
+
                 entities.forEach { transactionsDao.insert(it) }
-            } catch (e: Exception) {
-                // Error de red o mapeo, se ignoran los datos nuevos
+            } else {
+                throw Exception("Error HTTP ${response.code()}")
             }
         }
     }
 
-    /**
-     * Sincroniza todas las transacciones de la API y devuelve la lista local actualizada.
-     */
     suspend fun syncAndGetTransactions(): List<TransactionsModelRoom> {
         return withContext(Dispatchers.IO) {
             try {
-                val apiData = apiService.getTransactions()
-                val entities = apiData.map {
-                    TransactionsModelRoom(
-                        sender = it.sender,
-                        receiver = it.receiver,
-                        amount = it.amount,
-                        date = it.date,
-                        description = it.description,
-                        status = "COMPLETED"
-                    )
-                }
-                entities.forEach { transactionsDao.insert(it) }
+                fetchAndSaveTransactions()
                 transactionsDao.getAll()
             } catch (e: Exception) {
                 transactionsDao.getAll()
@@ -62,51 +50,58 @@ class WalletRepository(
         }
     }
 
-    /**
-     * Envía una transacción a la API. Se guarda localmente como PENDING de inmediato.
-     * Si la API tiene éxito, el estado cambia a COMPLETED.
-     */
     suspend fun sendAndSaveTransaction(transaction: TransactionsModel): Result<Boolean> {
         return withContext(Dispatchers.IO) {
-            // 1. Crear entidad local con estado PENDING
+
+            val localType = if (transaction.sender == "Ingreso Externo") {
+                "INCOME"
+            } else {
+                "EXPENSE"
+            }
+
             val entity = TransactionsModelRoom(
                 sender = transaction.sender,
                 receiver = transaction.receiver,
                 amount = transaction.amount,
                 date = transaction.date,
                 description = transaction.description,
-                status = "PENDING"
+                status = "PENDING",
+                type = localType
             )
 
-            // 2. Insertar en Room y obtener el ID generado
-            val generatedIdLong = transactionsDao.insert(entity)
-            val generatedId = generatedIdLong.toInt()
-
-
+            val generatedId = transactionsDao.insert(entity).toInt()
 
             try {
-                // 3. Intentar envío a la API (Solo una vez)
-                val response: Response<TransactionsModel> = apiService.sendTransaction(transaction)
+                val response = apiService.sendTransaction(transaction)
 
                 if (response.isSuccessful) {
-                    // 4. Éxito: Actualizar el estado en Room
-                    val successEntity = entity.copy(id = generatedId, status = "COMPLETED")
-                    transactionsDao.insert(successEntity)
+                    val remoteTransaction = response.body()
+
+                    if (remoteTransaction != null && remoteTransaction.id != null) {
+                        transactionsDao.updateStatusAndRemoteId(
+                            id = generatedId,
+                            status = "COMPLETED",
+                            remoteId = remoteTransaction.id
+                        )
+                    } else {
+                        transactionsDao.updateStatus(
+                            id = generatedId,
+                            status = "COMPLETED"
+                        )
+                    }
+
                     Result.success(true)
                 } else {
-                    // Error de servidor: El registro queda como PENDING en Room
+                    transactionsDao.updateStatus(generatedId, "FAILED")
                     Result.failure(Exception("Error de servidor: ${response.code()}"))
                 }
             } catch (e: Exception) {
-                // Error de red: El registro queda como PENDING en Room
+                transactionsDao.updateStatus(generatedId, "FAILED")
                 Result.failure(e)
             }
         }
     }
 
-    /**
-     * Obtiene todos los registros locales de la base de datos.
-     */
     suspend fun getAllLocalTransactions(): List<TransactionsModelRoom> {
         return withContext(Dispatchers.IO) {
             transactionsDao.getAll()

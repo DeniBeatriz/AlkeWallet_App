@@ -59,6 +59,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.junit.ktx)
 
     // Testing
     testImplementation(libs.junit)
@@ -68,6 +69,17 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    //Para implementar test a LiveData, viewModelScope y mocks
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    testImplementation("io.mockk:mockk:1.13.10")
+
+    //Para implementar test  a Room
+    androidTestImplementation("androidx.room:room-testing:2.6.1")
+
+
+
 
     // Room (KSP)
     val roomVersion = "2.6.1"
@@ -80,4 +92,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     implementation("androidx.recyclerview:recyclerview:1.3.0")
+
+    //Picasso
+    implementation(libs.squareup.picasso)
 }
