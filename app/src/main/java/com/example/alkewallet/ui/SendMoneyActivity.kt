@@ -24,8 +24,12 @@ class SendMoneyActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMain8Binding
     private lateinit var sessionManager: SessionManager
 
-    private var currentBalance: Double = 0.0
+    //Esta variable no reemplaza al ViewModel, sólo guardará el último valor observado desde balance
+    //luego hacer el observador del saldo en el onCreate
+    private var availableBalance: Double = 0.0
 
+
+    //con esto la vista obtiene el estado desde su propio ViewMdel, que a su vez utiliza Room y Retrofit a través del Repository
     private val viewModel: WalletViewModel by viewModels {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -52,7 +56,7 @@ class SendMoneyActivity : AppCompatActivity() {
 
         sessionManager = SessionManager(this)
         binding.txtSenderValue.text = sessionManager.getUserName()
-        currentBalance = intent.getDoubleExtra("current_balance", 0.0)
+
 
 
         binding.iconBack.setOnClickListener { finish() }
@@ -73,6 +77,17 @@ class SendMoneyActivity : AppCompatActivity() {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
 
+        //Para observar el saldo del ViewModel
+        //La Activity siempre tendrá el saldo actualizado calculado desde Room por el ViewModel
+        viewModel.balance.observe(this) { balance ->
+            availableBalance = balance
+            binding.txtAvailableBalance.text = "Saldo disponible: $${String.format("%.2f", balance)}"
+        }
+
+        //Para cargar las transacciones desde Room
+        viewModel.loadLocalTransactions()
+
+
         binding.btnSendContact.setOnClickListener {
             val sender = sessionManager.getUserName()
             val receiver = binding.etReceiver.text.toString().trim()
@@ -90,7 +105,7 @@ class SendMoneyActivity : AppCompatActivity() {
                 amount == null || amount <= 0 ->
                     binding.etNumberDecimalSend.error = "Ingrese un monto válido mayor a cero"
 
-                amount > currentBalance ->
+                amount > availableBalance ->
                     binding.etNumberDecimalSend.error = "Saldo insuficiente"
 
 
@@ -108,7 +123,7 @@ class SendMoneyActivity : AppCompatActivity() {
                         description = note
                     )
 
-                    viewModel.sendMoney(transaction)
+                    viewModel.sendMoney(transaction, "EXPENSE")
                 }
             }
         }

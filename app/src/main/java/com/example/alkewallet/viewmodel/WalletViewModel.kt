@@ -30,14 +30,15 @@ class WalletViewModel(private val repository: WalletRepository) : ViewModel() {
                 loadLocalTransactions()
             } catch (e: Exception) {
                 _errorMessage.value = "No fue posible sincronizar las transacciones"
+                loadLocalTransactions()
             }
         }
     }
 
-    fun sendMoney(transaction: TransactionsModel) {
+    fun sendMoney(transaction: TransactionsModel, type: String) {
         viewModelScope.launch {
             try {
-                val result = repository.sendAndSaveTransaction(transaction)
+                val result = repository.sendAndSaveTransaction(transaction, type)
                 _operationStatus.value = result.isSuccess
 
                 if (result.isSuccess) {

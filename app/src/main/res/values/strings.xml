@@ -31,6 +31,7 @@
     <string name="alert_forgot_password">Funciónalidad no disponible</string>
     <string name="sender">Emisor</string>
     <string name="receiver">Receptor</string>
+    <string name="balance_format">Saldo actual: %1$s</string>
 
 
 </resources>

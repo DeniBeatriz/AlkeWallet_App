@@ -1,5 +1,6 @@
 package com.example.alkewallet.data.api
 
+import com.example.alkewallet.model.SendTransactionRequest
 import com.example.alkewallet.model.TransactionsModel
 import com.example.alkewallet.model.UserModel
 import retrofit2.Response
@@ -22,7 +23,7 @@ interface ApiService {
 
     //Enviar una nueva transacción
     @POST("transactions")
-    suspend fun sendTransaction(@Body transaction: TransactionsModel): Response<TransactionsModel>
+    suspend fun sendTransaction(@Body request: SendTransactionRequest): Response<TransactionsModel>
 
 
 }

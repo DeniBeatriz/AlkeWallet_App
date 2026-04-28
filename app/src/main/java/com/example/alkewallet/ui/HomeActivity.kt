@@ -52,7 +52,9 @@ class HomeActivity : AppCompatActivity() {
         setupObservers()
         setupButtons()
 
+        viewModel.loadLocalTransactions()
         viewModel.syncTransactions()
+
     }
 
     override fun onResume() {
@@ -101,18 +103,18 @@ class HomeActivity : AppCompatActivity() {
                 .replace("$", "")
                 .replace(",", "")
                 .trim()
-                .toDoubleOrNull() ?:0.0
-            val intent = Intent(this, SendMoneyActivity::class.java)
-            intent.putExtra("current_balance", balanceValue)
-            startActivity(intent)
-        }
+                .toDoubleOrNull() ?: 0.0
+            binding.btnSend.setOnClickListener {
+                startActivity(Intent(this, SendMoneyActivity::class.java))
+            }
 
-        binding.btnReceive.setOnClickListener {
-            startActivity(Intent(this, ReceiveMoneyActivity::class.java))
-        }
+            binding.btnReceive.setOnClickListener {
+                startActivity(Intent(this, ReceiveMoneyActivity::class.java))
+            }
 
-        binding.imgProfile.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
+            binding.imgProfile.setOnClickListener {
+                startActivity(Intent(this, ProfileActivity::class.java))
+            }
         }
     }
 }

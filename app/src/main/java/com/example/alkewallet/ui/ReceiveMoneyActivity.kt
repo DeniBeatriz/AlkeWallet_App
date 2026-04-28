@@ -99,7 +99,7 @@ class ReceiveMoneyActivity : AppCompatActivity() {
                         description = note
                     )
 
-                    viewModel.sendMoney(transaction)
+                    viewModel.sendMoney(transaction,"INCOME")
                 }
             }
         }
